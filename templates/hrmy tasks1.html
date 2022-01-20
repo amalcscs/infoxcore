@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%extends 'indexAmal.html'%}
+{%load static%}
+{%block content%}
+<main class="ps-0 ps-md-5 flex-grow-1">
+  <div class="row">
+  <div class="mt-4 ml-4" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="ml-3">MY TASKS</span></div></div>
+ {% for ta in tasks1 %} 
+  <div class="row mt-4">
+    <div class="col-md-1 "></div>
+    <div class="col-md-5 ">
+      <div class="container">
+  <div class="row shadow bg-white " style="border-radius:20px;">
+  
+   <div class="container ">
+   <div class="row ml-2 mt-3">
+     <div class="col-md-4">
+       <div class="text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 400;">Task</div>
+     </div>
+     <div class="col-md-8">
+       <div class="" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">
+      <div class="ml-4"> {{ ta.task}}</div></div>
+     </div></div>
+     <div class="row mt-3 mb-3 ml-2">
+      <div class="col-md-4">
+        <div class="text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 400;">Date</div>
+      </div>
+      <div class="col-md-8">
+        <div class="" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">
+         <div class="ml-4">{{ ta.duedate }}</div></div>
+      </div>
+    </div>
+    <div class="row mt-3 mb-3 ml-2">
+      <div class="col-md-4">
+        <div class="text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 400;">Description</div>
+      </div>
+      <div class="col-md-8">
+        <div class="" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">
+         <div class="ml-4">{{ ta.description}}</div></div>
+      </div></div></div>
+      <div class="col-md-6 "></div>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+</main>
+
+{%endblock%}

@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%extends 'indexAmal.html'%}
+{%load static%}
+{%block content%}
+ 
+  <main class="ps-0 ps-md-5 flex-grow-1">
+    <div class="row">
+    <div class="mt-4 mb-4 ml-3" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="ml-3">MY TASKS</span></div></div>
+    
+      {% comment %} <a href="hrmytasks">  {% endcomment %}
+     {% for regdetails in names %} 
+        {% if forloop.first %} {% endif %}
+       <a href="hrmytasks?taskid={{ regdetails.id }}" style="text-decoration:none;"> 
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+    <div class=" mt-4">
+      <div id="" class="container shadow   bg-white" style="border-radius:30px;">
+     
+          <div class="row p-3">
+          
+      <div class="col-md-3" >
+        <img src="{% static 'circle.png'%}" width="20" height="20" class="ml-4"><span class="text-info" style="padding-left:50px;opacity:0.70;font-size: 20px;font-weight: 600;">{{ regdetails.task}}</span></div>
+          <div class="col-md-2 text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 600;">{{ regdetails.date}}</div>
+          <div class="col-md-3" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">Date to submit</div>
+          
+          <div class="col-md-2 text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 600;">{{ regdetails.duedate}}</div>
+          <div class="col-md-2 text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 600;">{{ regdetails.submited}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
+  </div> 
+      </a>
+      
+  {% endfor %} 
+  
+  </main>
+
+</body>
+</html>
+{%endblock%}

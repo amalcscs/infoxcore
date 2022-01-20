@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%extends 'indexAmal.html'%}
+{%load static%}
+{%block content%}
+  <main class="ps-0 ps-md-5 flex-grow-1">
+    <div class="row">
+<div class="mt-4 ml-5" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="ml-5">ASSIGNED TASKS</span></div></div>
+{% for hr in names %}
+{% if forloop.first %} {% endif %}
+<div class="row mt-5">
+  <div class="col-md-2"></div>
+<div class="col-md-5">
+<div id="" class="container shadow  bg-white" style="border-radius:10px;">
+  <div class="p-5">
+  
+    <div class="row pt-1">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:17px;">TASK</div></div>
+      <div class="col-md-8 " style="opacity: 0.70;font-size:17px;">
+      <div class="ml-5">{{hr.task}}</div></div>
+     </div>
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:17px;">DATE </div></div>
+      <div class="col-md-8 " style="opacity: 0.70;font-size:17px;">
+        <div class="ml-5">{{hr.date}}</div></div>
+      </div>
+      <div class="row pt-4">
+        <div class="col-md-4">
+        <div class="text-info" style="opacity: 0.70;font-size:17px;">DUE&nbsp;DATE</div></div>
+        <div class="col-md-8 " style="opacity: 0.70;font-size:17px;">
+          <div class="ml-5">{{hr.duedate}}</div></div>
+        </div>
+        <div class="row pt-4 text-center">
+          <form method="POST" action="hrGiveTaskRemind">
+            {%csrf_token%}
+          <input type="hidden" id="leavId" name="team_id" value={{hr.id }}>
+          <input  type="submit" value="Remind" name="status" class="btn btn-primary Search">
+        </form>
+          </div>
+        </div>
+        </div></div></div>
+        <div class="col-md-5"></div>
+     {% endfor %}
+</div>
+</main>
+
+</body>
+</html>{%endblock%}

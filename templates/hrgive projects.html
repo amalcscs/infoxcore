@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%extends 'indexAmal.html'%}
+{%load static%}
+{%block content%}
+
+  <main class="ps-0 ps-md-5 flex-grow-1">
+    <div class="row">
+
+<div class="mt-4 ml-5" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">GIVE TASK</div></div>
+<div class="row mt-5 mb-5">
+  <div class="col-md-1"></div>
+  <div class="col-md-8">
+<div id="" class="container shadow   bg-white" style="border-radius:10px;">
+  <div class=" pt-5 pb-5 pr-3">
+<form action="hrtasksuccess" method="post">
+    {% csrf_token %}
+    <div class="row pt-1">
+      <div class="col-md-4">
+      <div class="text-info mr-2" style="opacity: 0.70;font-size:20px;">Select Department </div></div>
+      <div class="col-md-8 ">
+       <select id="regdetailsdept" name="department" class="drop form-control ml-3 mt-2" required>
+      <option value=""> </option>
+          {% for regdetails in departments %}
+             <option value="{{ regdetails.department}}">{{ regdetails.department }}</option>
+          {% endfor %}
+      </select>
+     </div></div>
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:20px;">Select Designation </div></div>
+      <div class="col-md-8 justify-content-start">
+        <select id="regdetailsdesi" name="designation" class="drop form-control ml-3 mt-2" required>
+          <option value=""> </option>
+          {% for regdetails in mem %}
+             <option value="{{ regdetails.designation}}">{{ regdetails.designation }}</option>
+          {% endfor %}
+        </select>
+     </div></div>
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:20px;">Select Employee</div></div>
+      <div class="col-md-8 justify-content-start">
+        <select id="regdetailsempl" name="employee1" class="drop form-control ml-3 mt-2" required>
+          <option value=""> </option>
+          {% for regdetails in mem %}
+             <option value="{{ regdetails.name}}">{{ regdetails.name }}</option>
+          {% endfor %}
+        </select>
+     </div></div>
+     <input type="hidden" name="branchs" id="regdetailsphone" >
+     <input type="hidden" name="employee" id="regdetailsname" >
+
+     <input type="hidden" name="branch" id="regdetailsbranch" >
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:20px;">Task</div></div>
+      <div class="col-md-8 justify-content-start">
+        <textarea rows="4" cols="59" name="task" class="drop form-control ml-3 mt-2" required></textarea>
+     </div></div>
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity:0.70;font-size:20px;">Date</div></div>
+      <div class="col-md-8 ">
+        <h5 name="date" class="text-info ml-3 mt-2" style="opacity: 0.70;font-size:20px;">{% now 'd-M-Y' %}</h5>
+      
+     </div></div>
+     <div class="row pt-4">
+      <div class="col-md-4">
+      <div class="text-info" style="opacity: 0.70;font-size:20px;">Due Date</div></div>
+      <div class="col-md-8 justify-content-start">
+        <input type="date" class="birthday form-control ml-3 mt-2" name="duedate" required>
+   
+     </div></div>
+     <center><button type="submit" class="btn btn-primary Search justify-content-center mt-5">Assign</button></center>
+</form>
+</div></div></div>
+</div>
+</div>
+<div class="col-md-3"></div></div>
+</main>
+<script>
+    $("#regdetailsdept").change(function () {
+        <!-- const url = $("#personForm").attr("data-cities-url"); -->
+        const deptId = $(this).val();
+
+        $.ajax({
+            url: 'loadhrdesi',
+            data: {
+                'desi_id': deptId
+            },
+            success: function (data) {
+                $("#regdetailsdesi").html(data);
+                console.log(data);
+            }
+        });
+    });
+    $("#regdetailsdesi").change(function () {
+
+        const desiId = $(this).val();
+         const deptiId =$("#regdetailsdept").val();
+
+        $.ajax({
+            url: 'loadhremployeess',
+            data: {
+                'desi_id': desiId,
+                'dept_id': deptiId
+            },
+            success: function (data) {
+                $("#regdetailsempl").html(data);
+                console.log(data);
+            }
+        });
+   });
+        $("#regdetailsempl").change(function () {
+        <!-- const url = $("#personForm").attr("data-cities-url"); -->
+        const empID = $(this).val();
+        $.ajax({
+            url: 'loadhrtaskemp',
+            data: {
+                'emp_id': empID
+            },
+            success: function (data) {
+                const str = data.split(","); <!-- /[\s,]+/); -->
+                $("#regdetailsemaildiv").html(str[0]);
+                $("#regdetailsemail").val(str[0]);
+                $("#regdetailsphonediv").html(str[1]);
+                $("#regdetailsphone").val(str[1]);
+                $("#regdetailsnamediv").html(str[2]);
+                $("#regdetailsname").val(str[2]);
+                $("#regdetailsbranchdiv").html(str[3]);
+                $("#regdetailsbranch").val(str[3]);
+                console.log(data);
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>
+{%endblock%}

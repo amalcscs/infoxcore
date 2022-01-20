@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%extends 'indexAmal.html'%}
+{%load static%}
+{%block content%}
+  <main class="ps-0 ps-md-5 flex-grow-1">
+    <div class="row">
+    <div class="mt-4 ml-4" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">MY PROFILE</div></div>
+    <div class="row ">
+    <div id="" class="shadow bg-light rounded mt-5">
+      <div class="container ">
+      {% for t in mem %}
+      {% if forloop.first %}{% endif %}
+      <div class="row ">
+        <div class="col-md-6">
+      <h3 id="adname">{{ t.name }}</h3>
+      <h4 style="font-weight: 400">{{ t.designation }}</h4>
+      <h5 style="font-weight: 400">
+      <span style="color: #58B7AA">Joining date</span>&nbsp{{ t.dateofappoinment}}</h5>
+      </div><div class="col-md-6 text-center">
+    <img src="{{ t.employeeimage.url }}" class="rounded-circle justify-content-end ml-5" width="150" height="150" id=""></div>
+      </div></div><div></div></div>
+    <div class="row mt-5 ml-5">
+      <div class="col-md-8">
+  </div>
+    <div class="col-md-4 mt-5 "  style="">
+      <a href="hrmypropie_chart?empid={{ t.id }}"><button type="button" class="btn btn-primary active ml-5">PieChart</button>
+    </a></div></div>
+    <div class="row ml-5 mt-2"  style="">
+      <div class="col-md-8">
+      </div>
+      <div class="col-md-4  "  style="">
+      <a href="hr1?empid={{ t.id }}"><button type="button" class="btn btn-primary disabled ml-5">BarChart</button></a></div>
+  </div>
+</div>
+    {% endfor %}
+  </main>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <script  src="js/sidebarNavigation.js"></script>
+  {% comment %} <script>
+    document.getElementById("head").style.backgroundColor="red";
+   let btnprimary=document.querySelector("#primary");
+   btnprimary.addEventListener('click',() => {
+    document.getElementById("head").style.backgroundColor="green";
+   })
+    </script> {% endcomment %}
+
+{%endblock%}
