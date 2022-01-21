@@ -7,40 +7,40 @@
 {%block content%}
   <main class="ps-0 ps-md-5 flex-grow-1">
     <div class="row">
-    <div class="mt-4 ml-5 mb-3" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="">MY TASKS</span></div></div>
+    <div class="mt-4 ml-5 mb-3" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="ml-5">MY TASKS</span></div></div>
    {% for ta in tasks1 %} 
 <div class="container">
     <div class="row mt-4">
-      <div class="col-md-1 "></div>
-      <div class="col-md-5 ">
+      <div class="col-md-4 "></div>
+      <div class="col-md-4 ">
     <div class="row shadow bg-white " style="border-radius:20px;">
     
      <div class="container ">
      <div class="row ml-5 mt-3">
-       <div class="col-md-4">
+       <div class="col-md-2">
          <div class="text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 400;">Task</div>
        </div>
-       <div class="col-md-8">
+       <div class="col-md-10">
          <div class="" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">
         <div class="ml-4"> {{ ta.task}}</div></div>
        </div></div>
        <div class="row mt-3 mb-3 ml-5">
-        <div class="col-md-4">
+        <div class="col-md-2">
           <div class="text-info" style="opacity: 0.70;color: black;font-size: 20px;font-weight: 400;">Date</div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-10">
           <div class="" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;">
            <div class="ml-4">{{ ta.duedate }}</div></div>
         </div></div>
       </div>
     </div>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-4"></div>
   </div></div>
   
   <div class="row ml-1 mr-1">
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
     
   <div class="row shadow bg-white  mt-5" style="border-radius:20px;">
     <form action="hrmydupdate" method="post" enctype="multipart/form-data">
@@ -55,6 +55,7 @@
             <input type="hidden" id="leavId" name="team_id" value={{ta.id}}>
             <button type="submit" class="btn btn-lg btn-success mt-3 mb-4">Upload</button>
         </div></div></div></div></div>
+        <div class="col-md-4"></div>
       </div>
     </div>
     </form>

@@ -994,7 +994,7 @@ def MANmarkRecriutmentlist(request):
         usernameM2 = request.session['usernameM2']
     else:
         usernameM2 = "dummy"
-    rec=recrutement.objects.all().filter(brnch=usernameM2)
+    rec=recrutement.objects.all().filter(brnch="usernameM2")
     mem = regdetails.objects.filter(designation=usernameM).filter(name=usernameM1)
     return render(request, 'MANmarkRecriutmentlist.html',{'recruit':rec,'mem':mem})
 

@@ -1028,9 +1028,8 @@ class jobapplicant_datacollected(models.Model):
     
 
 class registration(models.Model):
-    emp_name = models.CharField(max_length=200) 
-    branch = models.CharField(max_length=200) 
-    designation = models.CharField(max_length=200) 
+    name = models.CharField(max_length=200,default='') 
+    college = models.CharField(max_length=200,default='')
     reg_no = models.CharField(max_length=200) 
     course = models.CharField(max_length=200) 
     stream = models.CharField(max_length=200)
@@ -1041,7 +1040,7 @@ class registration(models.Model):
     alternative_no = models.CharField(max_length=200)
     email = models.EmailField()
     profile_pic= models.ImageField(upload_to='img/%y')
-    attach_file= models.ImageField(upload_to='img/%y')
+    attach_file= models.FileField(default='')
     
 
   
