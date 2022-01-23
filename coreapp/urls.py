@@ -679,4 +679,8 @@ urlpatterns=[
 
 #---------------Marketing Section------------------------------------------------------#
 
+#---------------Intership Registration------------------------------------------------------#
+    re_path(r'^internshipregister$', views.internshipregister, name='internshipregister'),
+    re_path(r'^internshipregister1$', views.internshipregister1, name='internshipregister1'),
+    
 ]

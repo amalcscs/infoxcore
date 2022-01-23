@@ -1,0 +1,113 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%load static%}
+<style>
+    body{
+        background-image: url('{% static "internshipreg_bg1.jpg" %}');
+        background-repeat: no-repeat ;
+        background-size: cover;
+       }
+</style>
+<body>
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 bg-light mt-5 mb-5" style="border-radius: 20px;">
+        <form method="post" action="internshipregister" enctype="multipart/form-data">
+            {% csrf_token %}
+        <center><div class="mt-5" style="font-size:30px;font-weight: bolder;">INTERNSHIP REGISTRATION</div></center>
+        <div class="container mt-5 mb-5">
+         
+<div class="row">
+    <div class="container">
+<div class="text-left mt-3 ">FULL NAME</div>
+ <input type="text" name="name" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+</div></div>
+ <div class="row">
+    <div class="container">
+ <div class="text-left mt-3 ">COLLEGE NAME</div>
+ <input type="text" name="college_name" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+</div></div>
+<div class="row">
+    <div class="col-md-6">
+ <div class="text-left mt-3 ">REG NO</div>
+ <input type="text" name="reg_no" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+ </div>
+<div class="col-md-6">
+    <div class="text-left mt-3 ">COURSE</div>
+    <select name="course" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+        <option class="">M.TECH</option>
+        <option class="">B.TECH</option>
+        <option class="">BCA</option>
+        <option class="">MCA</option>
+        <option class="">B.COM</option>
+</select>
+ </div>
+</div>
+<div class="row">
+    <div class="container">
+ <div class="text-left mt-3 ">STREAM</div>
+ <input type="text" name="stream" class="form-control mt-2" style="border-radius:5px;border-color: #2f516f;">
+</div></div>
+<div class="row">
+    <div class="container">
+ <div class="text-left mt-3 ">PLATFORM</div>
+ <input type="text" name="platform" class="form-control mt-2" style="border-radius:5px;border-color: #2f516f;">
+</div></div>
+<div class="row">
+    <div class="col-md-6">
+ <div class="text-left mt-3 ">STARTING DATE</div>
+ <input type="date" name="start_date" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+ </div>
+<div class="col-md-6">
+    <div class="text-left mt-3 ">ENDING DATE</div>
+ <input type="date" name="end_date" class="form-control mt-2" style="border-radius:5px;border-color: #2f516f;">
+ </div>
+</div>
+ <div class="row">
+    <div class="col-md-4">
+ <div class="text-left mt-3 ">MOBILE</div>
+ <input type="text" name="mobile" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+ </div>
+ <div class="col-md-4"></div>
+<div class="col-md-4">
+    <div class="text-left mt-3 ">ALTERNATIVE NO</div>
+ <input type="text" name="alternative_no" class="form-control mt-2" style="border-radius:5px;border-color: #2f516f;">
+ </div>
+</div>        
+ <div class="row">
+    <div class="container">
+ <div class="text-left mt-3 ">EMAIL</div>
+ <input type="text" name="email" class="form-control mt-2 " style="border-radius:5px;border-color: #2f516f;">
+</div></div>
+ <div class="row">
+    <div class="col-md-4">
+ <div class="text-left mt-3 ">PROFILE PIC</div>
+ <input type="file" name="profile_pic" class="form-control mt-2" style="border:none;border-radius:5px;border-color: #2f516f;">
+ </div>
+ <div class="col-md-4"></div>
+<div class="col-md-4">
+    <div class="text-left mt-3 ">ATTACH FILE</div>
+ <input type="file" name="attach_file" class="form-control mt-2 " style="border:none;border-radius:5px;border-color: #2f516f;">
+ </div>
+</div>
+
+
+    <div class=" row  mt-5 ">
+        <div class="col-md-4"></div>
+         <div class="col-md-4">
+        <button type="submit" class="btn btn-outline-info justify-content-center" >submit</button></div>
+         </form>
+ <div class="col-md-4"></div>
+ <div>
+</div>
+</div>
+<div class="col-md-3"></div></div>
+</body>
+</html>

@@ -3,7 +3,7 @@ from datetime import datetime, date
 
 from .models import *
 from .models import  acntexpensest,acntspayslip,projectextensionrqst,marketingassignwrk,Execompletedtasks,Tlshareddatas,Tltasks,Project,PrTasktoTL,PrTasktoDR,Report,Testing
-from .models import Branch,college,internship,proandmarkng,service,recrutement,select,regdetails,admingivetask,managerattendance,leavereq,employeeattendance,hrreport,hrprojectsgive,mangivetasks,syllabus,viewdata,hrattendancet,drrpayment,manproductmarketing
+from .models import internshipregistration1,Branch,college,internship,proandmarkng,service,recrutement,select,regdetails,admingivetask,managerattendance,leavereq,employeeattendance,hrreport,hrprojectsgive,mangivetasks,syllabus,viewdata,hrattendancet,drrpayment,manproductmarketing
 from .forms import ImageFormHR,ImageFormManager,ImageFormadmin,SearchForm,FileForm,ViewForm,RegisterForm,RegnewForm,VForm
 # from qrcode import *
 from django.core.files import File
@@ -7888,3 +7888,36 @@ def manrecruadd(request):
 
 
 #----------------Marketing Section---------------------------------------------------------------------------------------------------    
+
+
+#--------------------intership registration----------------------------------------------------------------------------
+def internshipregister1(request):
+    return render(request,'internshipregister.html')
+
+def internshipregister(request):
+    a=internshipregistration1()
+    
+    if request.method=="POST":
+        a.fullname = request.POST.get('name')
+        a.collegename = request.POST.get('college_name')
+        a.reg_no = request.POST.get('reg_no')
+        a.course = request.POST.get('course')
+        a.stream = request.POST.get('stream')
+        a.platform = request.POST.get('platform')
+        a.start_date = request.POST.get('start_date')
+        a.end_date = request.POST.get('end_date')
+        a.mobile = request.POST.get('mobile')
+        a.alternative_no = request.POST.get('alternative_no')
+        a.email = request.POST.get('email')
+        a.profile_pic = request.FILES['profile_pic']
+        a.attach_file = request.FILES['attach_file']
+        a.reg_date=datetime.now()
+        a.save()
+        return render(request,'internshipregister.html')
+        
+
+    else:
+        return render(request,'internshipregister.html')
+
+            
+        

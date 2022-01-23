@@ -1027,20 +1027,28 @@ class jobapplicant_datacollected(models.Model):
 #     reg = models.ForeignKey(regdetails, on_delete=CASCADE) # Will automatically turn into reg_id in database    
     
 
-class registration(models.Model):
-    name = models.CharField(max_length=200,default='') 
-    college = models.CharField(max_length=200,default='')
+
+class internshipregistration1(models.Model):
+    reg_date = models.DateField(default='') 
+    fullname = models.CharField(max_length=200,default='') 
+    collegename = models.CharField(max_length=200,default='')
     reg_no = models.CharField(max_length=200) 
     course = models.CharField(max_length=200) 
     stream = models.CharField(max_length=200)
     platform = models.CharField(max_length=200)
-    start_date = models.CharField(max_length=200)
-    end_date = models.CharField(max_length=200)
+    start_date = models.DateField(default='')
+    end_date = models.DateField(default='')
     mobile = models.CharField(max_length=200)
     alternative_no = models.CharField(max_length=200)
     email = models.EmailField()
     profile_pic= models.ImageField(upload_to='img/%y')
     attach_file= models.FileField(default='')
+    rating = models.CharField(max_length=200,default='')
+    hrmanager = models.CharField(max_length=200,default='')
+    guide = models.CharField(max_length=200,default='')
+
+    class Meta:
+            db_table = "internshipregistration"
     
 
   
