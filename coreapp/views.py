@@ -7913,7 +7913,7 @@ def internshipregister(request):
         a.attach_file = request.FILES['attach_file']
         a.reg_date=datetime.now()
         a.save()
-        return render(request,'internshipregister.html')
+        return render(request,'internshipregister.html',{'a':a})
         
 
     else:

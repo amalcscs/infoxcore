@@ -8,45 +8,47 @@
   <main class="ps-0 ps-md-5  ">
     <div class="row">
     <div class="mt-4 ml-2" style="opacity: 0.36;color: black;font-size: 20px;font-weight: 600;"><span class="ml-5">TASKS</span></div></div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-    <div class="row mt-5 ">
+    <div class="row mt-5">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
       <div class="col-md-4">
-      <li id="smallbox" class="col shadow p-3 mb-5 bg-white d-flex " style="border-radius:20px;"><a style="text-decoration:none" href="hrassignedtasks">
-        <h5 >
+        <div class="container shadow mt-2 p-3 bg-light" style="border-radius:20px;">
+     <a style="text-decoration:none" href="hrassignedtasks">
+        <div class="text-center mr-5" style="font-size:20px;text-weight:bolder;">
           Assigned tasks
-        </h5>
-       
-         <img class="row-sm" src=" {% static 'Group18.png' %}" width="130" height="80" style="margin-left: 70px">
+        </div>
+       <div class="text-right">
+         <img class="mr-5 mt-2" src=" {% static 'Group18.png' %}" width="90" height="80" ></div>
          </a>
-         
-      </li></div>
+        </div>
+        </div>
       <div class="col-md-4">
-      <li id="smallbox" class="col shadow p-3 mb-5 bg-white d-flex " style="border-radius:20px;"><a style="text-decoration:none" href="hrgiveprojects">
-        <h5 >
+        <div class="container mt-2  shadow  p-3 bg-light" style="border-radius:20px;">
+      <a style="text-decoration:none" href="hrgiveprojects">
+        <div class="text-center mr-5" style="font-size:20px;text-weight:bolder;">
          Give tasks
-        </h5>
-    
-         <img class="row-sm" src=" {% static 'Group16.png' %}" width="100" height="80" style="margin-left: 90px">
+        </div>
+        <div class="text-right">
+         <img class="mr-5 mt-2" src=" {% static 'Group16.png' %}" width="100" height="80" ></div>
         </a>
-         
-      </li></div>
-      <div class="col-md-4">
-      <li id="smallbox" class="col shadow p-3 mb-5 bg-white d-flex " style="border-radius:20px;"><a style="text-decoration:none" href="hrtasks1">
-        <h5>
-          My tasks</h5>
-      
-         <img class="row-sm" src=" {% static 'Group15.png' %}" width="100" height="80" style="margin-left: 90px">
+      </div>
+      </div>
+      <div class="col-md-4 ">
+        <div class="container mt-2 shadow p-3 bg-light" style="border-radius:20px;">
+      <a style="text-decoration:none" href="hrtasks1">
+        <div class="text-center mr-5" style="font-size:20px;text-weight:bolder;">
+          My tasks</div>
+          <div class="text-right">
+         <img class="mr-5 mt-2" src=" {% static 'Group15.png' %}" width="100" height="80"></div>
        </a>
-         
-      
-      </li></div>
+        </div></div>
 
       </div>
    </div>
+   <div class="col-md-1"></div>
   </div>
-  <div class="col-md-2"></div>
+
 </body>
 </html>
 {%endblock%}
