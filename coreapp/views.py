@@ -1895,19 +1895,19 @@ def hrgiveprojects(request):
     context={'departments':department1,'mem':mem}
     return render(request,'hrgive projects.html',context)
 def hrtasksuccess(request):
-    # if request.session.has_key('usernamehr1'):
-    #     usernamehr1 = request.session['usernamehr1']
-    # if request.session.has_key('usernamehr'):
-    #     usernamehr = request.session['usernamehr']
-    # else:
-    #     usernamehr = "dummy"
-    # member = mangivetasks(department=request.POST['department'], designation=request.POST['designation'],
-    #                       employee=request.POST['employee'], task=request.POST['task'], date=datetime.now(),
-    #                       duedate=request.POST['duedate'],branch=request.POST['branch'],assignedBy=usernamehr)
-    # member.save()
-    # mem=regdetails.objects.filter(designation=usernamehr) .filter(name=usernamehr1)
-    # context = {'mem':mem}
-    return render(request,'hrtasksuccess.html')
+    if request.session.has_key('usernamehr1'):
+        usernamehr1 = request.session['usernamehr1']
+    if request.session.has_key('usernamehr'):
+        usernamehr = request.session['usernamehr']
+    else:
+        usernamehr = "dummy"
+    member = mangivetasks(department=request.POST['department'], designation=request.POST['designation'],
+                          employee=request.POST['employee'], task=request.POST['task'], date=datetime.now(),
+                          duedate=request.POST['duedate'],branch=request.POST['branch'],assignedBy=usernamehr)
+    member.save()
+    mem=regdetails.objects.filter(designation=usernamehr) .filter(name=usernamehr1)
+    context = {'mem':mem}
+    return render(request,'hrtasksuccess.html',context)
 def loadhremployeess(request):
     if request.session.has_key('usernamehr2'):
         usernamehr2 = request.session['usernamehr2']
@@ -1936,20 +1936,20 @@ def hrassignedtasks(request):
     context={'names':names,'mem':mem}
     return render(request,'hrassigned tasks.html',context)
 def hrassigned1(request):
-    # if request.session.has_key('usernamehr1'):
-    #     usernamehr1 = request.session['usernamehr1']
-    # if request.session.has_key('usernamehr'):
-    #     usernamehr = request.session['usernamehr']
-    # else:
-    #     usernamehr1 = "dummy"
-    # emp_id = request.GET.get('empid')
-    # names=mangivetasks.objects.filter(id=emp_id)
-    # mem=regdetails.objects.filter(designation=usernamehr) .filter(name=usernamehr1)
-    # context = {'names': names,'mem':mem}
-    # if mangivetasks.objects.filter(id=emp_id,submited=''):
-        return render(request,'hrassigned tasks1.html')
-    # else:
-    #     return render(request,'hrassigned tasks2.html',context)
+    if request.session.has_key('usernamehr1'):
+        usernamehr1 = request.session['usernamehr1']
+    if request.session.has_key('usernamehr'):
+        usernamehr = request.session['usernamehr']
+    else:
+        usernamehr1 = "dummy"
+    emp_id = request.GET.get('empid')
+    names=mangivetasks.objects.filter(id=emp_id)
+    mem=regdetails.objects.filter(designation=usernamehr) .filter(name=usernamehr1)
+    context = {'names': names,'mem':mem}
+    if mangivetasks.objects.filter(id=emp_id,submited=''):
+        return render(request,'hrassigned tasks1.html',context)
+    else:
+        return render(request,'hrassigned tasks2.html',context)
 def hrGiveTaskRemind(request):
     if request.method == 'POST':
         team = mangivetasks.objects.get(id=request.POST.get('team_id'))
@@ -7918,6 +7918,39 @@ def internshipregister(request):
 
     else:
         return render(request,'internshipregister.html')
+import qrcode
+import qrcode.image.svg
+from io import BytesIO
 
-            
+def index0(request):
+    return render(request,'homepage2.html')
+
+def qrcode123(request):
+    a=qrcode.make("myname")
+    a.save("qr.png")
+
+def index(request):
+    if request.method=="POST":
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
         
+        a=qrcode2(qrid=fname)
+        a.save()
+        user = qrcode2.objects.get(qrid=fname)
+        auth_id = user.id
+       
+        context = {}
+        factory = qrcode.image.svg.SvgImage
+        img = qrcode.make(("auth_id"+str(auth_id),""), image_factory=factory, box_size=10)
+        stream = BytesIO()
+        img.save(stream)
+        context["svg"] = stream.getvalue().decode()
+        imgs=context["svg"]
+        b=qrcode1(fname=fname,lname=lname,img=imgs,qr_id=auth_id)
+        b.save()
+        c=qrcode1.objects.all()
+
+        return render(request, "homepage.html",{'c':c,'imgs':imgs})
+        
+    else:
+        return render(request, "internshipregister.html")

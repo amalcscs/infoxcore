@@ -1051,4 +1051,13 @@ class internshipregistration1(models.Model):
             db_table = "internshipregistration"
     
 
-  
+class qrcode1(models.Model):
+    fname = models.CharField(max_length=50) 
+    lname = models.CharField(max_length=50) 
+    img = models.ImageField(upload_to='img/%y')
+
+    qr_id = models.IntegerField() 
+
+class qrcode2(models.Model):
+    
+    qrid = models.CharField(max_length=50,default='')
