@@ -7928,6 +7928,9 @@ def index0(request):
 def qrcode123(request):
     a=qrcode.make("myname")
     a.save("qr.png")
+    print(a)
+    
+    return render(request, "homepage.html")
 
 def index(request):
     if request.method=="POST":
@@ -7938,19 +7941,30 @@ def index(request):
         a.save()
         user = qrcode2.objects.get(qrid=fname)
         auth_id = user.id
-       
+        
         context = {}
-        factory = qrcode.image.svg.SvgImage
-        img = qrcode.make(("auth_id"+str(auth_id),""), image_factory=factory, box_size=10)
+        
+        img =user.qrid
         stream = BytesIO()
         img.save(stream)
         context["svg"] = stream.getvalue().decode()
-        imgs=context["svg"]
-        b=qrcode1(fname=fname,lname=lname,img=imgs,qr_id=auth_id)
+        svgs=context["svg"]
+        print("haiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+        
+        print(img)
+        print(stream)
+        print(context["svg"])
+        print(svgs)
+        print(context)
+        print("haiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+        b=qrcode1(fname=fname,lname=lname,img=svgs,qr_id=auth_id)
         b.save()
         c=qrcode1.objects.all()
-
-        return render(request, "homepage.html",{'c':c,'imgs':imgs})
+        
+        
+        
+        
+        return render(request, "homepage.html",{'svgs':svgs,'b':b,'c':c})
         
     else:
         return render(request, "internshipregister.html")
